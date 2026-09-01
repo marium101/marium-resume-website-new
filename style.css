@@ -1,0 +1,842 @@
+/* ================================
+   1. ROOT VARIABLES
+================================ */
+
+:root {
+    --bg-color: #0b1020;
+    --surface-color: #121a2f;
+    --card-color: #17213a;
+
+    --primary-color: #8b5cf6;
+    --secondary-color: #22d3ee;
+
+    --text-color: #f8fafc;
+    --muted-color: #a8b2c7;
+
+    --border-color: rgba(255, 255, 255, 0.1);
+
+    --max-width: 1150px;
+
+    --radius: 18px;
+
+    --shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ================================
+   2. RESET
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* ================================
+   3. COMMON CONTAINER
+================================ */
+
+header nav,
+main section,
+footer {
+    width: min(92%, var(--max-width));
+    margin-inline: auto;
+}
+
+
+/* ================================
+   4. NAVIGATION
+================================ */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(11, 16, 32, 0.85);
+    backdrop-filter: blur(14px);
+
+    border-bottom: 1px solid var(--border-color);
+}
+
+header nav {
+    min-height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+header nav>a {
+    font-size: 1.4rem;
+    font-weight: 800;
+
+    color: var(--text-color);
+
+    letter-spacing: 1px;
+}
+
+header nav>a::first-letter {
+    color: var(--secondary-color);
+}
+
+header nav div {
+    display: flex;
+    align-items: center;
+    gap: 1.3rem;
+}
+
+header nav div a {
+    color: var(--muted-color);
+    font-size: 0.9rem;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+header nav div a:hover {
+    color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+
+/* ================================
+   5. GENERAL SECTION
+================================ */
+
+main section {
+    padding: 6rem 0;
+}
+
+section>h2 {
+    font-size: clamp(1.8rem, 4vw, 2.7rem);
+    margin-bottom: 2rem;
+
+    position: relative;
+}
+
+section>h2::after {
+    content: "";
+
+    display: block;
+
+    width: 55px;
+    height: 4px;
+
+    margin-top: 0.7rem;
+
+    background: linear-gradient(90deg,
+            var(--primary-color),
+            var(--secondary-color));
+
+    border-radius: 10px;
+}
+
+section p {
+    color: var(--muted-color);
+}
+
+
+/* ================================
+   6. HERO SECTION
+================================ */
+
+#home {
+    min-height: calc(100vh - 75px);
+
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+
+    align-items: center;
+
+    gap: 4rem;
+
+    position: relative;
+}
+
+#home::before {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    background: var(--primary-color);
+
+    border-radius: 50%;
+
+    filter: blur(120px);
+
+    opacity: 0.18;
+
+    top: 10%;
+    left: -120px;
+
+    z-index: -1;
+}
+
+#home>div:first-child>p:first-child {
+    color: var(--secondary-color);
+
+    font-size: 0.85rem;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 1rem;
+}
+
+#home h1 {
+    font-size: clamp(3rem, 8vw, 6.5rem);
+
+    line-height: 1;
+
+    margin-bottom: 1.2rem;
+
+    background: linear-gradient(135deg,
+            #ffffff,
+            #a78bfa,
+            #22d3ee);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: titleReveal 1s ease-out;
+}
+
+#home h2 {
+    font-size: clamp(1.1rem, 2.5vw, 1.7rem);
+
+    color: var(--muted-color);
+
+    margin-bottom: 1.5rem;
+}
+
+#home>div:first-child>p:last-of-type {
+    max-width: 650px;
+
+    font-size: 1.05rem;
+
+    margin-bottom: 2rem;
+}
+
+
+/* ================================
+   7. HERO BUTTONS
+================================ */
+
+#home a {
+    display: inline-block;
+
+    padding: 0.8rem 1.4rem;
+
+    margin-right: 0.7rem;
+
+    margin-bottom: 0.5rem;
+
+    border-radius: 999px;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+#home a[href="#projects"] {
+    background: linear-gradient(135deg,
+            var(--primary-color),
+            #6366f1);
+
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.25);
+}
+
+#home a[href="#contact"] {
+    border: 1px solid var(--border-color);
+
+    background: rgba(255, 255, 255, 0.04);
+}
+
+#home a:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+
+
+/* ================================
+   8. PROFILE IMAGE
+================================ */
+
+#home>div:last-child {
+    display: flex;
+    justify-content: center;
+}
+
+#home img {
+    width: min(350px, 80vw);
+    aspect-ratio: 1;
+
+    object-fit: cover;
+
+    border-radius: 30px;
+
+    border: 2px solid rgba(139, 92, 246, 0.6);
+
+    box-shadow:
+        0 0 0 12px rgba(139, 92, 246, 0.05),
+        0 25px 70px rgba(0, 0, 0, 0.45);
+
+    animation: floatingImage 4s ease-in-out infinite;
+}
+
+
+/* ================================
+   9. ABOUT
+================================ */
+
+#about {
+    border-top: 1px solid var(--border-color);
+}
+
+#about p {
+    max-width: 850px;
+
+    font-size: 1.05rem;
+}
+
+
+/* ================================
+   10. EDUCATION
+================================ */
+
+#education article {
+    background: var(--surface-color);
+
+    padding: 2rem;
+
+    border: 1px solid var(--border-color);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+#education article::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 4px;
+    height: 100%;
+
+    background: linear-gradient(var(--primary-color),
+            var(--secondary-color));
+}
+
+#education h3 {
+    font-size: 1.5rem;
+
+    margin-bottom: 0.6rem;
+}
+
+#education article p {
+    margin-bottom: 0.4rem;
+}
+
+
+/* ================================
+   11. SKILLS GRID
+================================ */
+
+#skills>div {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 1.2rem;
+}
+
+#skills article {
+    padding: 1.5rem;
+
+    background: var(--card-color);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: var(--radius);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+#skills article:hover {
+    transform: translateY(-8px);
+
+    border-color: var(--primary-color);
+
+    background: #1b2745;
+}
+
+#skills h3 {
+    color: var(--text-color);
+
+    margin-bottom: 0.6rem;
+}
+
+
+/* ================================
+   12. PROJECTS GRID
+================================ */
+
+#projects {
+    border-top: 1px solid var(--border-color);
+}
+
+#projects {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 1.5rem;
+}
+
+#projects>h2 {
+    grid-column: 1 / -1;
+}
+
+#projects article {
+    padding: 2rem;
+
+    background:
+        linear-gradient(145deg,
+            rgba(139, 92, 246, 0.08),
+            rgba(34, 211, 238, 0.03));
+
+    border: 1px solid var(--border-color);
+
+    border-radius: var(--radius);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+#projects article:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(139, 92, 246, 0.7);
+
+    box-shadow: var(--shadow);
+}
+
+#projects h3 {
+    margin-bottom: 0.8rem;
+}
+
+#projects article p:last-child {
+    margin-top: 1rem;
+
+    color: var(--secondary-color);
+
+    font-size: 0.9rem;
+}
+
+
+/* ================================
+   13. EXPERIENCE
+================================ */
+
+#experience article {
+    padding: 1.5rem 0;
+
+    border-bottom: 1px solid var(--border-color);
+}
+
+#experience h3 {
+    margin-bottom: 0.5rem;
+}
+
+
+/* ================================
+   14. CERTIFICATIONS
+================================ */
+
+#achievements {
+    border-top: 1px solid var(--border-color);
+}
+
+#achievements article {
+    display: grid;
+
+    grid-template-columns: 1fr auto;
+
+    gap: 1rem;
+
+    padding: 1.2rem 1rem;
+
+    border-bottom: 1px solid var(--border-color);
+
+    transition: background 0.3s ease;
+}
+
+#achievements article:hover {
+    background: rgba(139, 92, 246, 0.06);
+}
+
+#achievements h3 {
+    font-size: 1rem;
+}
+
+#achievements p {
+    text-align: right;
+}
+
+
+/* ================================
+   15. CURRENTLY LEARNING
+================================ */
+
+main>section:not(#home):last-of-type {
+    text-align: center;
+
+    background:
+        linear-gradient(135deg,
+            rgba(139, 92, 246, 0.08),
+            rgba(34, 211, 238, 0.05));
+
+    border-radius: var(--radius);
+}
+
+main>section:not(#home):last-of-type p {
+    font-size: 1.05rem;
+}
+
+
+/* ================================
+   16. CONTACT
+================================ */
+
+#contact {
+    text-align: center;
+}
+
+#contact p {
+    max-width: 600px;
+
+    margin: 0 auto 2rem;
+}
+
+#contact a {
+    display: inline-block;
+
+    margin: 0.4rem;
+
+    padding: 0.8rem 1.3rem;
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 999px;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+#contact a:hover {
+    background: var(--primary-color);
+
+    transform: translateY(-4px);
+}
+
+
+/* ================================
+   17. FOOTER
+================================ */
+
+footer {
+    padding: 2rem 0;
+
+    text-align: center;
+
+    border-top: 1px solid var(--border-color);
+}
+
+footer p {
+    color: var(--muted-color);
+
+    font-size: 0.85rem;
+}
+
+
+/* ================================
+   18. KEYFRAME ANIMATIONS
+================================ */
+
+@keyframes floatingImage {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+
+@keyframes titleReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ================================
+   19. TABLET
+================================ */
+
+@media (max-width: 1024px) {
+
+    header nav div {
+        gap: 0.8rem;
+    }
+
+    header nav div a {
+        font-size: 0.8rem;
+    }
+
+    #home {
+        grid-template-columns: 1fr 0.7fr;
+
+        gap: 2rem;
+    }
+
+    #skills>div {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* ================================
+   20. MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+    header nav {
+        min-height: auto;
+
+        padding: 1rem 0;
+
+        flex-direction: column;
+
+        gap: 0.8rem;
+    }
+
+    header nav div {
+        width: 100%;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 0.7rem;
+    }
+
+    header nav div a {
+        font-size: 0.75rem;
+    }
+
+    main section {
+        padding: 4rem 0;
+    }
+
+    #home {
+        min-height: auto;
+
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+        padding-top: 5rem;
+    }
+
+    #home>div:first-child>p:last-of-type {
+        margin-inline: auto;
+    }
+
+    #home>div:last-child {
+        order: -1;
+    }
+
+    #home img {
+        width: min(260px, 70vw);
+    }
+
+    #home a {
+        margin: 0.3rem;
+    }
+
+    #skills>div {
+        grid-template-columns: 1fr;
+    }
+
+    #projects {
+        grid-template-columns: 1fr;
+    }
+
+    #achievements article {
+        grid-template-columns: 1fr;
+    }
+
+    #achievements p {
+        text-align: left;
+    }
+}
+
+/* =================================
+   EXTRA HERO DETAILS
+================================= */
+
+#home>div:first-child {
+    position: relative;
+}
+
+#home>div:first-child::after {
+    content: "HTML • CSS • Python • C++";
+
+    display: block;
+
+    margin-top: 1.5rem;
+
+    color: var(--muted-color);
+
+    font-size: 0.8rem;
+
+    letter-spacing: 1.5px;
+
+    opacity: 0.8;
+}
+
+
+/* Profile image decoration */
+
+#home>div:last-child {
+    position: relative;
+}
+
+#home>div:last-child::before {
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    border: 2px solid var(--secondary-color);
+
+    border-radius: 50%;
+
+    top: -25px;
+    right: 10px;
+
+    opacity: 0.35;
+
+    animation: rotateDecoration 8s linear infinite;
+}
+
+#home>div:last-child::after {
+    content: "";
+
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    background: var(--primary-color);
+
+    border-radius: 50%;
+
+    bottom: 15px;
+    left: 20px;
+
+    box-shadow: 0 0 25px var(--primary-color);
+
+    animation: pulseDot 2s ease-in-out infinite;
+}
+
+
+/* Extra animations */
+
+@keyframes rotateDecoration {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes pulseDot {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.4);
+        opacity: 1;
+    }
+}
