@@ -839,4 +839,23 @@ footer p {
         transform: scale(1.4);
         opacity: 1;
     }
+} 
+@media (max-width: 600px) {
+
+    header nav {
+        padding: 0.8rem 0;
+    }
+
+    header nav > a {
+        font-size: 1.2rem;
+    }
+
+    header nav div {
+        gap: 0.45rem 0.8rem;
+    }
+
+    header nav div a {
+        font-size: 0.72rem;
+    }
+
 }
